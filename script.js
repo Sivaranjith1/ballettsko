@@ -1,43 +1,45 @@
-const valuta = [{
-    navn: 'Euro',
-    kurs: 8,
-    img: "img/valuta/euro.jpg"
-},
-{
-    navn: 'NOK',
-    kurs: 1,
-    img: "img/valuta/nok.jpg"
-},
-{
-    navn: 'USD',
-    kurs: 6,
-    img: "img/valuta/usa.jpg"
-},
-{
-    navn: 'GBP',
-    kurs: 9,
-    img: "img/valuta/gb.jpg"
-},
-{
-    navn: 'AUD',
-    kurs: 7,
-    img: "img/valuta/aud.jpg"
-},
-]
+$(function () {
+    $(document).on("click", function () {
+        $("#sidenav").animate({
+            width: 'toggle'
+        }, 350);
+        $('#content').toggleClass('full shade');
 
+    });
+});
+
+const main = document.querySelector('main');
+
+let prisIndex = 0
+
+//kalling av functions
+leggTilsko()
 
 //konvertere valuta
 function konverterPris(nok, index) {
     //index i array valuta
     const kurs = valuta[index].kurs
-    const pris = nok / kurs
-    return pris
+    const pris = Math.round((nok / kurs) * 100) / 100
+    return pris + ' ' + valuta[index].navn
 }
 
-$(function () {
-    $(document).on("click", function () {
-        $("#sidenav").animate({ width: 'toggle' }, 350);
-        $('#content').toggleClass('full shade');
-
-    });
-})
+//legg til sko
+function leggTilsko() {
+    main.innerHTML = ''
+    sko.forEach(elem => {
+        const pris = konverterPris(elem.pris, prisIndex)
+        const objectFit = elem.objectFit ? elem.objectFit : ''
+        main.innerHTML += `
+        <div class = "character">
+            <div class = "card-img">
+            <img style="object-fit: ${objectFit}" src = "${elem.img}"
+        alt = "SKO">
+            </div> <div class = "space"> </div> <div>
+            <h2> ${elem.navn} </h2>
+            <div class = "space"> 
+            </div>
+            <h2>${pris}</h2>
+            </div></div>
+            `
+    })
+}

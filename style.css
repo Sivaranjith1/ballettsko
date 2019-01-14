@@ -4,12 +4,13 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Navbar */
 
 .nav-color {
-    --main-color: #F67280;
+    background: linear-gradient(90deg, rgb(98, 161, 255) 0%, rgb(89, 89, 255) 90%);
 }
 
 .nav-space {
@@ -21,12 +22,15 @@
     box-sizing: border-box;
     display: block;
     background-color: var(--main-color, var(--default-color, --white));
-    font-family: 'Lovers Quarrel', cursive;
-    font-size: 2rem;
     width: 100%;
     padding: 10px;
-    box-shadow: 0 0 30px;
+    box-shadow: 0 0 20px;
     margin-bottom: 15px;
+}
+
+.nav h1{
+    font-family: 'Lovers Quarrel', cursive !important;
+    font-size: 3rem;
 }
 
 .fixed-nav {
@@ -60,14 +64,57 @@
 }
 #sidenavContent {
     width: 100%;
-    
+    text-align: center;
+    margin-top: 10%;
 }
 .full {
     opacity: 1;
 }
+
 .shade {
     opacity: 0.5;
 }
+
 #content {
     transition: 1s;
+}
+
+/* Cards */
+
+.character {
+    margin: 20px 2px;
+    text-align: center;
+    display: inline-block;
+    background: #fafafa;
+    box-shadow: 8px 5px 76px rgba(0, 0, 0, 0.1);
+    height: 350px;
+    width: 300px;
+}
+
+.card-img {
+    position: relative;
+    height: 60%;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.space {
+    margin: 2rem;
+}
+
+main {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container {
+    max-width: 1200px;
+    display: block;
+    margin: auto;
 }
