@@ -57,7 +57,19 @@
     display: none;
     height: 100%;
     width: 30%;
-    background: linear-gradient(90deg, red 0%, blue 90%);
+    background: linear-gradient(90deg, rgb(194, 194, 194) 0%, rgba(255, 255, 255, 0) 90%);
+}
+
+.full {
+    opacity: 1;
+}
+
+.shade {
+    opacity: 0.5;
+}
+
+#content {
+    transition: 1s;
 }
 
 /* Cards */

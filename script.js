@@ -14,7 +14,13 @@ function konverterPris(nok, index) {
 }
 
 $(function () {
+    $(document).on("click", function () {
+        $("#sidenav").animate({
+            width: 'toggle'
+        }, 350);
+        $('#content').toggleClass('full shade');
 
+    })
 })
 
 //legg til sko
