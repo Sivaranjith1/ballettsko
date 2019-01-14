@@ -50,15 +50,17 @@
     padding: 0;
     margin: 0;
 }
-
 #sidenav {
     position: absolute;
     top: 0;
     display: none;
     height: 100%;
     width: 30%;
-<<<<<<< HEAD
     background: linear-gradient(90deg, rgb(194, 194, 194) 0%, rgba(255, 255, 255, 0) 90%);
+}
+#sidenavContent {
+    width: 100%;
+    
 }
 .full {
     opacity: 1;
@@ -69,9 +71,3 @@
 #content {
     transition: 1s;
 }
-=======
-    background: linear-gradient(90deg, red 0%, blue 90%);
-}
-
-/* Cards */
->>>>>>> e0d24fcceb78f1ae6dc0d1293e03c4a2f06fbd07
