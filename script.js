@@ -1,4 +1,14 @@
-const main = document.querySelector('main')
+$(function () {
+    $(document).on("click", function () {
+        $("#sidenav").animate({
+            width: 'toggle'
+        }, 350);
+        $('#content').toggleClass('full shade');
+
+    });
+});
+
+const main = document.querySelector('main');
 
 let prisIndex = 0
 
@@ -12,16 +22,6 @@ function konverterPris(nok, index) {
     const pris = Math.round((nok / kurs) * 100) / 100
     return pris + ' ' + valuta[index].navn
 }
-
-$(function () {
-    $(document).on("click", function () {
-        $("#sidenav").animate({
-            width: 'toggle'
-        }, 350);
-        $('#content').toggleClass('full shade');
-
-    })
-})
 
 //legg til sko
 function leggTilsko() {
