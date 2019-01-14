@@ -53,6 +53,8 @@
 
 #sidenav {
     position: absolute;
+    top: 0;
+    display: none;
     height: 100%;
     width: 30%;
     background: linear-gradient(90deg, red 0%, blue 90%);
