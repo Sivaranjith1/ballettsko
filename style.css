@@ -62,11 +62,15 @@
     width: 30%;
     background: linear-gradient(90deg, rgb(194, 194, 194) 0%, rgba(255, 255, 255, 0) 90%);
 }
-#sidenavContent {
+.sidenavContent {
     width: 100%;
     text-align: center;
-    margin-top: 10%;
 }
+.sidenavContent div {
+    margin-top: 10%;
+    font-size: 130%;
+}
+
 .full {
     opacity: 1;
 }

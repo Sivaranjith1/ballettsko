@@ -4,8 +4,15 @@ $(function () {
             width: 'toggle'
         }, 350);
         $('#content').toggleClass('full shade');
+        sidenavContent("settings")
 
     });
+    function sidenavContent(type) {
+        if (type === "settings") {
+            let content = "<div></div>"
+            $("#sidenavContent").html(content);
+        }
+    }
 });
 
 const main = document.querySelector('main');
