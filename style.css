@@ -50,9 +50,12 @@
     padding: 0;
     margin: 0;
 }
+
 #sidenav {
     position: absolute;
     height: 100%;
     width: 30%;
     background: linear-gradient(90deg, red 0%, blue 90%);
 }
+
+/* Cards */
