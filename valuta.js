@@ -1,12 +1,12 @@
 const valuta = [{
-        navn: 'Euro',
-        kurs: 8,
-        img: "img/valuta/euro.jpg"
-    },
-    {
         navn: 'NOK',
         kurs: 1,
         img: "img/valuta/nok.jpg"
+    },
+    {
+        navn: 'Euro',
+        kurs: 8,
+        img: "img/valuta/euro.jpg"
     },
     {
         navn: 'USD',
