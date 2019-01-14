@@ -8,8 +8,8 @@
 
 /* Navbar */
 
-.transparent {
-    --main-color: rgba(0, 0, 0, 1);
+.nav-color {
+    --main-color: #F67280;
 }
 
 .nav-space {
@@ -22,7 +22,7 @@
     display: block;
     background-color: var(--main-color, var(--default-color, --white));
     font-family: 'Lovers Quarrel', cursive;
-    font-size: 2.5rem;
+    font-size: 2rem;
     width: 100%;
     padding: 10px;
     box-shadow: 0 0 30px;
