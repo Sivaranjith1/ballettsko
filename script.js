@@ -1,15 +1,26 @@
 $(function () {
-    $(document).on("click", function () {
+    $("#sidenavIndicator").on("click", function sidenavOpen() {
         $("#sidenav").animate({
             width: 'toggle'
         }, 350);
-        $('#content').toggleClass('full shade');
-        sidenavContent("settings")
+        $("#sidenavIndicator").toggle();
+        $("#content").toggleClass("full shade");
 
+        sidenavContent("settings")
+    });
+    $("#content").on("click", function sidenavOpen() {
+        if ($("#content").hasClass("full shade")) {
+            $("#sidenavIndicator").toggle();
+            $("#sidenav").animate({
+                width: 'toggle'
+            }, 350);
+
+            $('#content').toggleClass('full shade');
+        }
     });
     function sidenavContent(type) {
         if (type === "settings") {
-            let content = "<div></div>"
+            let content = "<div>Ludvig er homo</div>"
             $("#sidenavContent").html(content);
         }
     }

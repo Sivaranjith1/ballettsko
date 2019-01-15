@@ -10,7 +10,7 @@
 /* Navbar */
 
 .nav-color {
-    background: linear-gradient(90deg, rgb(98, 161, 255) 0%, rgb(89, 89, 255) 90%);
+    background: linear-gradient(200deg, rgb(90, 90, 90) 0%, rgb(34, 34, 34) 90%);
 }
 
 .nav-space {
@@ -57,18 +57,41 @@
 #sidenav {
     position: absolute;
     top: 0;
+    z-index: 2;
     display: none;
     height: 100%;
     width: 30%;
-    background: linear-gradient(90deg, rgb(194, 194, 194) 0%, rgba(255, 255, 255, 0) 90%);
+    background: linear-gradient(90deg, rgba(112, 112, 112, 0.8) 20%, rgba(255, 255, 255, 0) 100%);
 }
-.sidenavContent {
+#sidenavContent {
     width: 100%;
-    text-align: center;
-}
-.sidenavContent div {
     margin-top: 10%;
+}
+#sidenavContent div {
+    text-align: center;
     font-size: 130%;
+}
+#sidenavIndicator {
+    position: fixed;
+    top: 50%;
+    transition: 0.3s;
+    margin-left: -30px;
+    height: 70px;
+    width: 50px;
+    border-radius: 40%;
+    background: linear-gradient(90deg, rgb(54, 54, 54) 30%, rgb(2, 2, 2) 90%);
+}
+#sidenavIndicator:hover {
+    margin-left: -20px;
+}
+#sidenavIndicator i {
+    margin-top: 50%;
+    margin-left: 63%;
+    transition: 0.5s;
+    color: #fafafa;
+}
+#sidenavIndicator i:hover {
+    color: #b1b1b1;
 }
 
 .full {
@@ -90,7 +113,7 @@
     text-align: center;
     display: inline-block;
     background: #fafafa;
-    box-shadow: 8px 5px 76px rgba(0, 0, 0, 0.1);
+    box-shadow: 8px 5px 76px rgba(0, 0, 10, 0.4);
     height: 350px;
     width: 300px;
 }
