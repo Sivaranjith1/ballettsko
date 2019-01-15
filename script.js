@@ -24,6 +24,7 @@ $(function () {
             $("#sidenavContent").html(content);
         }
     }
+
 });
 
 const main = document.querySelector('main');
@@ -52,11 +53,10 @@ function leggTilsko() {
             <div class = "card-img">
             <img style="object-fit: ${objectFit}" src = "${elem.img}"
         alt = "SKO">
-            </div> <div class = "space"> </div> <div>
             <h2> ${elem.navn} </h2>
             <div class = "space"> 
             </div>
-            <h2>${pris}</h2>
+            <div id='cardBottom'><div id='pris'><div>${pris}</div></div><div id='kjøp'><div>Kjøp</div></div></div>
             </div></div>
             `
     })

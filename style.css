@@ -129,6 +129,26 @@
     object-fit: cover;
 }
 
+#cardBottom {
+    font-size: 140%;
+    display: flex;
+    height: 30%;
+    margin-top: 5%;
+}
+#pris {
+    width: 50%;
+}
+#pris div {
+    transform: translate(0%, 65%);
+}
+#kjøp {
+    width: 50%;
+    background-color: #b1b1b1;
+}
+#kjøp div {
+    transform: translate(0%, 65%);
+}
+
 .space {
     margin: 2rem;
 }
