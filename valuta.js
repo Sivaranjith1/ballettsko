@@ -23,4 +23,9 @@ const valuta = [{
         kurs: 7,
         img: "img/valuta/aud.jpg"
     },
+    {
+        navn: 'ZWL',
+        kurs: 8 / 35000000000000000,
+        img: "img/valuta/zwl.jpg"
+    },
 ]

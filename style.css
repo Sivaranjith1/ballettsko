@@ -28,7 +28,7 @@
     margin-bottom: 15px;
 }
 
-.nav h1{
+.nav h1 {
     font-family: 'Lovers Quarrel', cursive !important;
     font-size: 3rem;
 }
@@ -54,6 +54,7 @@
     padding: 0;
     margin: 0;
 }
+
 #sidenav {
     position: absolute;
     top: 0;
@@ -63,14 +64,17 @@
     width: 30%;
     background: linear-gradient(90deg, rgba(112, 112, 112, 0.8) 20%, rgba(255, 255, 255, 0) 100%);
 }
+
 #sidenavContent {
     width: 100%;
     margin-top: 10%;
 }
+
 #sidenavContent div {
     text-align: center;
     font-size: 130%;
 }
+
 #sidenavIndicator {
     position: fixed;
     top: 50%;
@@ -81,15 +85,18 @@
     border-radius: 40%;
     background: linear-gradient(90deg, rgb(54, 54, 54) 30%, rgb(2, 2, 2) 90%);
 }
+
 #sidenavIndicator:hover {
     margin-left: -20px;
 }
+
 #sidenavIndicator i {
     margin-top: 50%;
     margin-left: 63%;
     transition: 0.5s;
     color: #fafafa;
 }
+
 #sidenavIndicator i:hover {
     color: #b1b1b1;
 }
@@ -116,6 +123,12 @@
     box-shadow: 8px 5px 76px rgba(0, 0, 10, 0.4);
     height: 350px;
     width: 300px;
+}
+
+.character h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-img {
@@ -177,4 +190,79 @@ footer img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* modal */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #fafafa;
+    padding: 0;
+    max-height: 70%;
+    width: 85vw;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2px;
+    transition: 1s;
+}
+
+.open {
+    z-index: 103;
+    display: block;
+    opacity: 1;
+    top: 50%;
+    transform: scaleX(1) scaleY(1) translateY(-50%);
+}
+
+.modal-content {
+    padding: 24px;
+}
+
+.modal-footer {
+    border-radius: 0 0 2px 2px;
+    background-color: #fafafa;
+    padding: 4px 6px;
+    height: 56px;
+    text-align: right;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 102;
+    top: -25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 125%;
+    width: 100%;
+    background: #000;
+}
+
+.modal-overlay-open {
+    display: block;
+    opacity: 0.5;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.flex>.card-img {
+    height: 50vh;
+    width: 60%;
+}
+
+.innhold {
+    flex: 1;
+}
+
+@media only screen and (max-width: 800px) {
+    .flex>.card-img {
+        width: 100%;
+    }
 }
