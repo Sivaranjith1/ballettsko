@@ -7,6 +7,7 @@ $(function () {
         $("#sidenavIndicator").toggle();
         $("#content").toggleClass("full shade");
         isSidenavOpen = true
+        $("body").toggleClass("overflowHidden");
 
         sidenavContent("settings")
     });
@@ -18,14 +19,27 @@ $(function () {
             }, 350);
 
             isSidenavOpen = false
+            $("body").toggleClass("overflowHidden");
             $('#content').toggleClass('full shade');
         }
     });
 
     function sidenavContent(type) {
         if (type === "settings") {
-            let content = "<div>Ludvig er homo</div>"
-            $("#sidenavContent").html(content);
+            let content = `
+                <div id="sidenavBanner" class="sidenavContent">
+                    <h3>Handlekurv</h3>
+                </div>
+                <div id="sidenavBody" class="sidenavContent">
+        
+                </div>
+                <div id="sidenavFooter" class="sidenavContent">
+                    <h3>Endre valuta</h3>
+                </div>`
+            $("#sidenav").html(content);
+        }
+        if (type === "purchase") {
+
         }
     }
 
@@ -96,8 +110,7 @@ function changeModal(evt) {
     const {
         navn,
         pris,
-        img,
-        size
+        img
     } = sko[index]
     const objectFit = sko[index].objectFit ? `object-fit: ${sko[index].objectFit}` :
         ''

@@ -11,6 +11,7 @@
 
 .nav-color {
     background: linear-gradient(200deg, rgb(90, 90, 90) 0%, rgb(34, 34, 34) 90%);
+    pointer-events: none;
 }
 
 .nav-space {
@@ -56,23 +57,13 @@
 }
 
 #sidenav {
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 2;
     display: none;
     height: 100%;
-    width: 30%;
-    background: linear-gradient(90deg, rgba(112, 112, 112, 0.8) 20%, rgba(255, 255, 255, 0) 100%);
-}
-
-#sidenavContent {
-    width: 100%;
-    margin-top: 10%;
-}
-
-#sidenavContent div {
-    text-align: center;
-    font-size: 130%;
+    width: 40%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(77, 77, 77, 0) 100%);
 }
 
 #sidenavIndicator {
@@ -101,12 +92,42 @@
     color: #b1b1b1;
 }
 
+.sidenavContent {
+    text-align: center;
+    width: 70%;
+    color: white;
+}
+
+#sidenavBanner {
+    height: 20%;
+    margin-top: 10px;
+}
+
+#sidenavBody {
+    top: 20%;
+    height: 60%;
+}
+
+#sidenavFooter {
+    height: 20%;
+}
+
 .full {
     opacity: 1;
 }
 
 .shade {
-    opacity: 0.5;
+    opacity: 0.3;
+    overflow: hidden;
+}
+
+.overflowOn {
+    overflow: auto;
+
+}
+
+.overflowHidden {
+    overflow: hidden;
 }
 
 #content {
@@ -167,7 +188,6 @@
     text-align: center;
     top: 50%;
     left: 50%;
-
 }
 
 .space {
@@ -317,8 +337,6 @@ footer img {
 
 #antall::-webkit-outer-spin-button,
 #antall::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0;
-    /* <-- Apparently some margin are still there even though it's hidden */
 }
