@@ -62,18 +62,8 @@
     z-index: 2;
     display: none;
     height: 100%;
-    width: 30%;
-    background: linear-gradient(90deg, rgba(112, 112, 112, 0.8) 20%, rgba(255, 255, 255, 0) 100%);
-}
-
-#sidenavContent {
-    width: 100%;
-    margin-top: 10%;
-}
-
-#sidenavContent div {
-    text-align: center;
-    font-size: 130%;
+    width: 40%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(77, 77, 77, 0) 100%);
 }
 
 #sidenavIndicator {
@@ -101,13 +91,29 @@
 #sidenavIndicator i:hover {
     color: #b1b1b1;
 }
+.sidenavContent {
+    text-align: center;
+    width: 70%;
+    color: white;
+}
+#sidenavBanner {
+    height: 20%;
+    margin-top: 10px;
+}
+#sidenavBody {
+    top: 20%;
+    height: 60%;
+}
+#sidenavFooter {
+    height: 20%;
+}
 
 .full {
     opacity: 1;
 }
 
 .shade {
-    opacity: 0.5;
+    opacity: 0.3;
     overflow: hidden;
 }
 .overflowOn {

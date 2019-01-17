@@ -22,8 +22,20 @@ $(function () {
 
     function sidenavContent(type) {
         if (type === "settings") {
-            let content = "<div>Ludvig er homo</div>"
-            $("#sidenavContent").html(content);
+            let content = `
+                <div id="sidenavBanner" class="sidenavContent">
+                    <h3>Handlekurv</h3>
+                </div>
+                <div id="sidenavBody" class="sidenavContent">
+        
+                </div>
+                <div id="sidenavFooter" class="sidenavContent">
+                    <h3>Endre valuta</h3>
+                </div>`
+            $("#sidenav").html(content);
+        }
+        if (type === "purchase") {
+
         }
     }
 
@@ -94,17 +106,12 @@ function changeModal(evt) {
     const {
         navn,
         pris,
-        img,
-        size
+        img
     } = sko[index]
     const objectFit = sko[index].objectFit ? `object-fit: ${sko[index].objectFit}` :
         ''
 
     const konPris = konverterPris(pris, prisIndex)
-
-    const storrelse = size.map(elem =>
-        `<label>${elem}<input class="storrelse" type="radio" name="stor"></label>`
-    )
 
     content.innerHTML = `
         <h1 class="center">${navn}</h1>
@@ -120,10 +127,11 @@ function changeModal(evt) {
             <div id="modalPris">
             ${konPris}
             </div>
-
-            <div class="antall">
-                <h2 class="mellomText">Antall</h2>
-                <input type="number" min="1" max="12" id="antall" value="1"/>
+            <br>
+            <div id="kjøpOuter">
+                <div id="kjøpInner">
+                    Kjøp
+                </div>
             </div>
             </div>
         </div>
