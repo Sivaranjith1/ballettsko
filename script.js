@@ -1,3 +1,4 @@
+let isSidenavOpen = false
 $(function () {
     $("#sidenavIndicator").on("click", function sidenavOpen() {
         $("#sidenav").animate({
@@ -5,6 +6,7 @@ $(function () {
         }, 350);
         $("#sidenavIndicator").toggle();
         $("#content").toggleClass("full shade");
+        isSidenavOpen = true
 
         sidenavContent("settings")
     });
@@ -15,6 +17,7 @@ $(function () {
                 width: 'toggle'
             }, 350);
 
+            isSidenavOpen = false
             $('#content').toggleClass('full shade');
         }
     });
@@ -83,8 +86,8 @@ function skoEvt() {
 
 //opner modal
 function changeModal(evt) {
+    if (isSidenavOpen) return;
     const target = evt.currentTarget
-    console.log(target.id)
 
     const index = target.getAttribute('data-index')
 
@@ -102,8 +105,8 @@ function changeModal(evt) {
     const konPris = konverterPris(pris, prisIndex)
 
     const storrelse = size.map(elem =>
-        `<label>${elem}<input class="storrelse" type="radio" name="stor"></label>`
-    )
+        `<input id="stor${elem}" class="storrelse" type="radio" name="stor"><label for="stor${elem}" class="storrelseLabel">${elem}</label>`
+    ).join(' ')
 
     content.innerHTML = `
         <h1 class="center">${navn}</h1>
@@ -120,13 +123,31 @@ function changeModal(evt) {
             ${konPris}
             </div>
 
-            <div class="antall">
-                <h2 class="mellomText">Antall</h2>
-                <input type="number" min="1" max="12" id="antall" value="1"/>
+            <div class="mellom">
+            <h2 class = "mellomText"> Størrelse </h2>
+                <div class="flexWrap">${storrelse}</div>
             </div>
+
+            <div class="mellom">
+                <h2 class="mellomText">Antall</h2>
+                <div class = "flexWrap jc-center">
+                    <div class="storrelseBtn changeAntall" data-type="-">-</div>
+                    <input type="number" min="1" max="12" id="antall" value="1"/>
+                    <div class = "storrelseBtn changeAntall" data-type = "+"> + </div>
+                </div>
+            </div>
+
+            <div id="leggTil" class="storrelseBtn">Legg til i handlekurv</div>
             </div>
         </div>
     `
 
+    document.querySelectorAll('.changeAntall').forEach(elem => elem.addEventListener('click', changeAntall, false))
+
     openModal(modal1)
+}
+
+function changeAntall(evt) {
+
+
 }
