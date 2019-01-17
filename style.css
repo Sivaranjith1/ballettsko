@@ -134,6 +134,7 @@
 .card-img {
     position: relative;
     height: 60%;
+    cursor: default;
 }
 
 .card-img img {
@@ -149,19 +150,21 @@
     margin-top: 5%;
 }
 #pris {
-    width: 50%;
+    width: 100%;
 }
-#pris div {
-    transform: translate(0%, 65%);
+#modalPris {
+    font-size: 130%;
 }
-#kjøp {
-    width: 50%;
-    background-color: #b1b1b1;
+#kjøpOuter {
+    width: 100%;
+    height: 30%;
 }
-#kjøp div {
-    transform: translate(0%, 65%);
+#kjøpInner {
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    
 }
-
 .space {
     margin: 2rem;
 }

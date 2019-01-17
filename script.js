@@ -67,7 +67,7 @@ function leggTilsko() {
             <h2> ${elem.navn} </h2>
             <div class = "space"> 
             </div>
-            <div id='cardBottom'><div id='pris'><div>${pris}</div></div><div id='kjøp'><div>Kjøp</div></div></div>
+            <div id='cardBottom'><div id='pris'><div>${pris}</div></div>
             </div></div>
             `
     })
@@ -84,6 +84,8 @@ function skoEvt() {
 //opner modal
 function changeModal(evt) {
     const target = evt.currentTarget
+    console.log(target.id)
+
     const index = target.getAttribute('data-index')
 
     const content = modal1.querySelector('.modal-content')
@@ -109,7 +111,15 @@ function changeModal(evt) {
             </div>
 
             <div class="innhold">
+            <div id="modalPris">
             ${konPris}
+            </div>
+            <br>
+            <div id="kjøpOuter">
+                <div id="kjøpInner">
+                    Kjøp
+                </div>
+            </div>
             </div>
         </div>
     `
