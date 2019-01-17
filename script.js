@@ -5,6 +5,7 @@ $(function () {
         }, 350);
         $("#sidenavIndicator").toggle();
         $("#content").toggleClass("full shade");
+        $("body").toggleClass("overflowHidden");
 
         sidenavContent("settings")
     });
@@ -14,7 +15,7 @@ $(function () {
             $("#sidenav").animate({
                 width: 'toggle'
             }, 350);
-
+            $("body").toggleClass("overflowHidden");
             $('#content').toggleClass('full shade');
         }
     });
