@@ -93,12 +93,17 @@ function changeModal(evt) {
     const {
         navn,
         pris,
-        img
+        img,
+        size
     } = sko[index]
     const objectFit = sko[index].objectFit ? `object-fit: ${sko[index].objectFit}` :
         ''
 
     const konPris = konverterPris(pris, prisIndex)
+
+    const storrelse = size.map(elem =>
+        `<label>${elem}<input class="storrelse" type="radio" name="stor"></label>`
+    )
 
     content.innerHTML = `
         <h1 class="center">${navn}</h1>
@@ -114,11 +119,10 @@ function changeModal(evt) {
             <div id="modalPris">
             ${konPris}
             </div>
-            <br>
-            <div id="kjøpOuter">
-                <div id="kjøpInner">
-                    Kjøp
-                </div>
+
+            <div class="antall">
+                <h2 class="mellomText">Antall</h2>
+                <input type="number" min="1" max="12" id="antall" value="1"/>
             </div>
             </div>
         </div>
