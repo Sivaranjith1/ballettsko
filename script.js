@@ -110,7 +110,8 @@ function changeModal(evt) {
     const {
         navn,
         pris,
-        img
+        img,
+        size
     } = sko[index]
     const objectFit = sko[index].objectFit ? `object-fit: ${sko[index].objectFit}` :
         ''
