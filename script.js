@@ -64,9 +64,18 @@ $(function () {
                 </div>
                 <div id="sidenavFooter" class="sidenavContent">
                     <h3>Endre valuta</h3>
+                    <div id="valutaContainer"></div>
                 </div>`
             $("#sidenav").html(content);
         }
+        let valutaContainer = document.getElementById("valutaContainer");
+        valutaContainer.className = "flexWrap";
+        valutaContainer.style.flexWrap = "nowrap";
+        valuta.forEach(e => {
+            let option = document.createElement("div");
+            option.innerHTML = `<br><div>${e.navn}<img src=${e.img}></div>`;
+            valutaContainer.appendChild(option);
+        })
         if (type === "purchase") {
 
         }
