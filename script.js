@@ -1,3 +1,32 @@
+//error div
+const errorDiv = document.querySelector('#error')
+
+//handlekurv
+let handlekurv = [
+
+]
+
+/*
+    [
+        {
+            navn: 'product',
+            pris: 1200,
+            varer: [
+                {
+                    storrelse: 37,
+                    antall: 5
+                },
+                {
+                    storrelse: 50,
+                    antall: 8
+                },
+            ]
+        }
+    ]
+
+*/
+
+
 let isSidenavOpen = false
 $(function () {
     $("#sidenavIndicator").on("click", function sidenavOpen() {
@@ -119,7 +148,7 @@ function changeModal(evt) {
     const konPris = konverterPris(pris, prisIndex)
 
     const storrelse = size.map(elem =>
-        `<input id="stor${elem}" class="storrelse" type="radio" name="stor"><label for="stor${elem}" class="storrelseLabel">${elem}</label>`
+        `<input id="stor${elem}" class="storrelse" type="radio" name="stor"><label for="stor${elem}" class="storrelseLabel" data-storrelse="${elem}">${elem}</label>`
     ).join(' ')
 
     content.innerHTML = `
@@ -158,10 +187,57 @@ function changeModal(evt) {
 
     document.querySelectorAll('.changeAntall').forEach(elem => elem.addEventListener('click', changeAntall, false))
 
+    document.querySelector('#leggTil').addEventListener('click', addToCart, false)
+
     openModal(modal1)
 }
 
+//øker eller minker antall
 function changeAntall(evt) {
+    const type = evt.target.getAttribute('data-type')
+    const antall = document.querySelector('#antall')
+    let nyVerdi
 
+    if (type === '+') {
+        nyVerdi = Number(antall.value) + 1
+    } else {
+        nyVerdi = Number(antall.value) - 1
+    }
 
+    if (nyVerdi <= 0) return
+    if (nyVerdi > 16) return
+
+    antall.value = nyVerdi
+
+}
+
+//legger til handlekurven
+function addToCart(evt) {
+    const storrelse = document.querySelector('.storrelse:checked')
+    const antall = document.querySelector('#antall').value
+
+    if (storrelse === null) {
+        error('Du må velge størrelse')
+        return
+    }
+
+    if (antall <= 0) {
+        error('Antall må være større enn null')
+        return
+    }
+    if (antall > 16) {
+        error('Antall må være mindre enn 16')
+        return
+    }
+}
+
+//sender errormelding
+function error(msg) {
+    errorDiv.innerHTML = msg
+
+    errorDiv.classList.add('showError')
+
+    setTimeout(() => {
+        errorDiv.classList.remove('showError')
+    }, 4000)
 }

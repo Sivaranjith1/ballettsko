@@ -290,6 +290,10 @@ footer img {
     text-align: center;
 }
 
+.innhold>* {
+    margin-bottom: 1em;
+}
+
 @media only screen and (max-width: 800px) {
     .flex>.card-img {
         width: 100%;
@@ -341,4 +345,15 @@ footer img {
 #antall::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+/* error */
+.showError {
+    display: block;
+}
+
+.error {
+    display: none;
+    position: fixed;
+    width: 80vw;
 }
