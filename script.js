@@ -84,7 +84,6 @@ $(function () {
             $("#sidenav").animate({
                 width: 'toggle'
             }, 350);
-
             isSidenavOpen = false
             $("body").toggleClass("overflowHidden");
             $('#content').toggleClass('full shade');
@@ -109,9 +108,13 @@ $(function () {
         let valutaContainer = document.getElementById("valutaContainer");
         valutaContainer.className = "flexWrap";
         valutaContainer.style.flexWrap = "nowrap";
-        valuta.forEach(e => {
+        valuta.forEach((e, i) => {
             let option = document.createElement("div");
-            option.innerHTML = `<br><div>${e.navn}<img src=${e.img}></div>`;
+            option.id = i;
+            option.addEventListener("click", (e) => {
+                endreValuta(i);
+            })
+            option.innerHTML = `<br>${e.navn}<img src=${e.img}>`;
             valutaContainer.appendChild(option);
         })
         if (type === "purchase") {
