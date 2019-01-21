@@ -2,14 +2,52 @@
 const errorDiv = document.querySelector('#error')
 
 //handlekurv
-let handlekurv = [
+let handlekurv = [{
+        name: 'product',
+        pris: 1200,
+        varer: [{
+                storrelse: 37,
+                antall: 5
+            },
+            {
+                storrelse: 50,
+                antall: 8
+            },
+        ]
+    },
+    {
+        name: 'product',
+        pris: 1200,
+        varer: [{
+                storrelse: 37,
+                antall: 5
+            },
+            {
+                storrelse: 50,
+                antall: 8
+            },
+        ]
+    },
+    {
+        name: 'product',
+        pris: 1200,
+        varer: [{
+                storrelse: 37,
+                antall: 5
+            },
+            {
+                storrelse: 50,
+                antall: 8
+            },
+        ]
+    }
 
 ]
 
 /*
     [
         {
-            navn: 'product',
+            name: 'product',
             pris: 1200,
             varer: [
                 {
@@ -189,7 +227,7 @@ function changeModal(evt) {
                 </div>
             </div>
 
-            <div id="leggTil" class="storrelseBtn">Legg til i handlekurv</div>
+            <div id="leggTil" class="storrelseBtn" data-index="${index}">Legg til i handlekurv</div>
             </div>
         </div>
     `

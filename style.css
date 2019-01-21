@@ -354,12 +354,26 @@ footer img {
 }
 
 /* error */
-.showError {
-    display: block;
+.error {
+    /* display: none; */
+    position: fixed;
+    width: 85vw;
+    background: rgba(166, 50, 50, 0.8);
+    color: white;
+    top: 1rem;
+    z-index: 104;
+    /* padding: 2rem; */
+    text-align: center;
+    border-radius: 1rem;
+    transition: 0.5s;
+    overflow: hidden;
+    height: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
-.error {
-    display: none;
-    position: fixed;
-    width: 80vw;
+.showError {
+    /* display: block; */
+    height: auto;
+    padding: 2rem;
 }
