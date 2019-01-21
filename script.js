@@ -2,7 +2,63 @@
 const errorDiv = document.querySelector('#error')
 
 //handlekurv
-let handlekurv = []
+let handlekurv = [{
+    name: 'sko1',
+    price: 1200,
+    products: [{
+        size: 37,
+        amount: 7
+    },
+    {
+        size: 50,
+        amount: 8
+    },
+    ]
+},
+{
+    name: 'sko2',
+    price: 1200,
+    products: [{
+        storrelse: 37,
+        amount: 5
+    },
+    {
+        storrelse: 50,
+        amount: 1
+    },
+    ]
+},
+{
+    name: 'sko3',
+    price: 1200,
+    products: [{
+        size: 37,
+        amount: 6
+    },
+    {
+        size: 50,
+        amount: 2
+    },
+    ]
+}]
+
+console.log(handlekurvPriser())
+
+function handlekurvPriser() {
+    let prisArray = [];
+    handlekurv.forEach((e) => {
+        let productTotal = 0;
+        e.products.forEach((ev) => {
+            productTotal += e.price * ev.amount;
+        })
+        let tempProduct = {
+            navn: e.name,
+            price: productTotal
+        }
+        prisArray.push(tempProduct);
+    })
+    return prisArray;
+}
 
 function handlekurvTotal() {
     let total = 0;
@@ -14,14 +70,24 @@ function handlekurvTotal() {
     return total;
 }
 handlekurvTotal();
-
 let isSidenavOpen = false
+// $(document).on("pagecreate", "#content", function () {
+//     $(document).on("swipeleft swiperight", "#content", function (e) {
+//         // We check if there is no open panel on the page because otherwise
+//         // a swipe to close the left panel would also open the right panel (and v.v.).
+//         // We do this by checking the data that the framework stores on the page element (panel: open).
+//         if ($(".ui-page-active").jqmData("panel") !== "open") {
+//             // panel is closed
+//             if (e.type === "swipeleft") {
+//                 $("#right-panel").panel("open");
+//             } else if (e.type === "swiperight") {
+//                 $("#left-panel").panel("open");
+//             }
+//         }
+//     });
+// });
 $(function () {
-    $(window).on("swipe", function (e) {
-        alert()
-    })
-
-    $("#sidenavIndicator").on("click", function sidenavOpen() {
+    function sidenavOpen() {
         $("#sidenav").animate({
             width: 'toggle'
         }, 350);
@@ -31,8 +97,10 @@ $(function () {
         $("body").toggleClass("overflowHidden");
 
         sidenavContent("settings")
-    });
-    $("#content").on("click", function sidenavOpen() {
+    }
+
+    $("#sidenavIndicator").on("click", sidenavOpen);
+    $("#content").on("click", function sidenavClose() {
         if ($("#content").hasClass("full shade")) {
             $("#sidenavIndicator").toggle();
             $("#sidenav").animate({
@@ -79,7 +147,6 @@ const modal1 = document.querySelector('#modal1')
 let prisIndex = 0
 
 //kalling av functions
-getCart()
 initModal()
 leggTilsko()
 
@@ -91,26 +158,11 @@ function konverterPris(nok, index) {
     return pris + ' ' + valuta[index].navn
 }
 
-//konvertere valuta bare tell
-function konverterPrisTall(nok, index) {
-    const kurs = valuta[index].kurs
-    const pris = Math.round((nok / kurs) * 100) / 100
-    return pris
-}
-
 //kall denne når man endrer valuta
 function endreValuta(index) {
     //index til den nye valutaen i valuta arrayet
     prisIndex = index
     leggTilsko()
-    endreHandlekurvValuta()
-}
-
-//endrer valuta i handlekurv
-function endreHandlekurvValuta() {
-    handlekurv.forEach(e => {
-        e.pris = konverterPrisTall(sko[e.index].pris, prisIndex)
-    })
 }
 
 //legg til sko
@@ -257,38 +309,27 @@ function addToCart(evt) {
         const findSize = findProducts.find(elem => elem.size === valgtStor)
         if (findSize) {
             findSize.amount += antall
-        } else {
-            findProducts.push({
-                size: valgtStor,
-                amount: antall
-            })
+            return
         }
-    } else {
 
-        let product = {
-            index: index,
-            name: valgtSko.navn,
-            pris: valgtSko.pris,
-            products: [{
-                size: valgtStor,
-                amount: antall
-            }]
-        }
-        handlekurv.push(product)
+
+        findProducts.push({
+            size: valgtStor,
+            amount: antall
+        })
+        return
     }
 
-    saveCart()
-}
-
-function saveCart() {
-    localStorage.setItem('handlekurv', JSON.stringify(handlekurv));
-}
-
-function getCart() {
-    const tempCart = localStorage.getItem('handlekurv')
-    if (tempCart) {
-        handlekurv = JSON.parse(tempCart)
+    let product = {
+        index: index,
+        name: valgtSko.navn,
+        pris: valgtSko.pris,
+        products: [{
+            size: valgtStor,
+            amount: antall
+        }]
     }
+    handlekurv.push(product)
 }
 
 /*
