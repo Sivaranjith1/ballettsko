@@ -305,6 +305,14 @@ footer img {
     .flex>.card-img {
         width: 100%;
     }
+
+    #sidenav {
+        width: 100vw;
+    }
+
+    .sidenavContent {
+        width: 90vw;
+    }
 }
 
 .storrelseLabel,

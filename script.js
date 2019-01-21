@@ -70,6 +70,7 @@ const modal1 = document.querySelector('#modal1')
 let prisIndex = 0
 
 //kalling av functions
+getCart()
 initModal()
 leggTilsko()
 
@@ -81,11 +82,26 @@ function konverterPris(nok, index) {
     return pris + ' ' + valuta[index].navn
 }
 
+//konvertere valuta bare tell
+function konverterPrisTall(nok, index) {
+    const kurs = valuta[index].kurs
+    const pris = Math.round((nok / kurs) * 100) / 100
+    return pris
+}
+
 //kall denne når man endrer valuta
 function endreValuta(index) {
     //index til den nye valutaen i valuta arrayet
     prisIndex = index
     leggTilsko()
+    endreHandlekurvValuta()
+}
+
+//endrer valuta i handlekurv
+function endreHandlekurvValuta() {
+    handlekurv.forEach(e => {
+        e.pris = konverterPrisTall(sko[e.index].pris, prisIndex)
+    })
 }
 
 //legg til sko
@@ -232,27 +248,38 @@ function addToCart(evt) {
         const findSize = findProducts.find(elem => elem.size === valgtStor)
         if (findSize) {
             findSize.amount += antall
-            return
+        } else {
+            findProducts.push({
+                size: valgtStor,
+                amount: antall
+            })
         }
+    } else {
 
-
-        findProducts.push({
-            size: valgtStor,
-            amount: antall
-        })
-        return
+        let product = {
+            index: index,
+            name: valgtSko.navn,
+            pris: valgtSko.pris,
+            products: [{
+                size: valgtStor,
+                amount: antall
+            }]
+        }
+        handlekurv.push(product)
     }
 
-    let product = {
-        index: index,
-        name: valgtSko.navn,
-        pris: valgtSko.pris,
-        products: [{
-            size: valgtStor,
-            amount: antall
-        }]
+    saveCart()
+}
+
+function saveCart() {
+    localStorage.setItem('handlekurv', JSON.stringify(handlekurv));
+}
+
+function getCart() {
+    const tempCart = localStorage.getItem('handlekurv')
+    if (tempCart) {
+        handlekurv = JSON.parse(tempCart)
     }
-    handlekurv.push(product)
 }
 
 /*
