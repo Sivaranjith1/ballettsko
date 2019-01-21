@@ -2,67 +2,7 @@
 const errorDiv = document.querySelector('#error')
 
 //handlekurv
-<<<<<<< HEAD
-let handlekurv = [{
-    name: 'sko1',
-    price: 1200,
-    products: [{
-        size: 37,
-        amount: 7
-    },
-    {
-        size: 50,
-        amount: 8
-    },
-    ]
-},
-{
-    name: 'sko2',
-    price: 1200,
-    products: [{
-        storrelse: 37,
-        amount: 5
-    },
-    {
-        storrelse: 50,
-        amount: 1
-    },
-    ]
-},
-{
-    name: 'sko3',
-    price: 1200,
-    products: [{
-        size: 37,
-        amount: 6
-    },
-    {
-        size: 50,
-        amount: 2
-    },
-    ]
-}]
-
-console.log(handlekurvPriser())
-
-function handlekurvPriser() {
-    let prisArray = [];
-    handlekurv.forEach((e) => {
-        let productTotal = 0;
-        e.products.forEach((ev) => {
-            productTotal += e.price * ev.amount;
-        })
-        let tempProduct = {
-            navn: e.name,
-            price: productTotal
-        }
-        prisArray.push(tempProduct);
-    })
-    return prisArray;
-}
-=======
 let handlekurv = []
->>>>>>> ebca314d39ba690ca888ac617b698f9b7db3d0ed
 
 function handlekurvTotal() {
     let total = 0;
@@ -77,7 +17,9 @@ handlekurvTotal();
 
 let isSidenavOpen = false
 $(function () {
-    $(window).on("swipe", function (e) { alert() })
+    $(window).on("swipe", function (e) {
+        alert()
+    })
 
     $("#sidenavIndicator").on("click", function sidenavOpen() {
         $("#sidenav").animate({
