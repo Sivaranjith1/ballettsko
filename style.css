@@ -94,8 +94,9 @@
 
 #valutaContainer img {
     width: 100%;
-    height: 30px;
-    object-fit: contain;
+    height: 50%;
+    margin: 10%;
+    object-fit: fill;
 }
 
 .sidenavContent {
