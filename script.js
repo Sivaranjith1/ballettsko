@@ -2,67 +2,7 @@
 const errorDiv = document.querySelector('#error')
 
 //handlekurv
-let handlekurv = [{
-        name: 'product',
-        pris: 1200,
-        varer: [{
-                storrelse: 37,
-                antall: 5
-            },
-            {
-                storrelse: 50,
-                antall: 8
-            },
-        ]
-    },
-    {
-        name: 'product',
-        pris: 1200,
-        varer: [{
-                storrelse: 37,
-                antall: 5
-            },
-            {
-                storrelse: 50,
-                antall: 8
-            },
-        ]
-    },
-    {
-        name: 'product',
-        pris: 1200,
-        varer: [{
-                storrelse: 37,
-                antall: 5
-            },
-            {
-                storrelse: 50,
-                antall: 8
-            },
-        ]
-    }
-
-]
-
-/*
-    [
-        {
-            name: 'product',
-            pris: 1200,
-            varer: [
-                {
-                    storrelse: 37,
-                    antall: 5
-                },
-                {
-                    storrelse: 50,
-                    antall: 8
-                },
-            ]
-        }
-    ]
-
-*/
+let handlekurv = []
 
 
 let isSidenavOpen = false
@@ -198,7 +138,7 @@ function changeModal(evt) {
     const konPris = konverterPris(pris, prisIndex)
 
     const storrelse = size.map(elem =>
-        `<input id="stor${elem}" class="storrelse" type="radio" name="stor"><label for="stor${elem}" class="storrelseLabel" data-storrelse="${elem}">${elem}</label>`
+        `<input  data-storrelse="${elem}" id="stor${elem}" class="storrelse" type="radio" name="stor"><label for="stor${elem}" class="storrelseLabel" data-storrelse="${elem}">${elem}</label>`
     ).join(' ')
 
     content.innerHTML = `
@@ -264,7 +204,9 @@ function changeAntall(evt) {
 //legger til handlekurven
 function addToCart(evt) {
     const storrelse = document.querySelector('.storrelse:checked')
-    const antall = document.querySelector('#antall').value
+    const antall = Number(document.querySelector('#antall').value)
+    const index = evt.target.getAttribute('data-index')
+    const valgtSko = sko[index]
 
     if (storrelse === null) {
         error('Du må velge størrelse')
@@ -279,7 +221,59 @@ function addToCart(evt) {
         error('Antall må være mindre enn 16')
         return
     }
+
+    const valgtStor = storrelse.getAttribute('data-storrelse')
+
+    //finner
+    const find = handlekurv.find(elem => elem.index === index)
+    if (find) {
+        const findProducts = find.products
+
+        const findSize = findProducts.find(elem => elem.size === valgtStor)
+        if (findSize) {
+            findSize.amount += antall
+            return
+        }
+
+
+        findProducts.push({
+            size: valgtStor,
+            amount: antall
+        })
+        return
+    }
+
+    let product = {
+        index: index,
+        name: valgtSko.navn,
+        pris: valgtSko.pris,
+        products: [{
+            size: valgtStor,
+            amount: antall
+        }]
+    }
+    handlekurv.push(product)
 }
+
+/*
+    [
+        {
+            name: 'product',
+            pris: 1200,
+            varer: [
+                {
+                    storrelse: 37,
+                    antall: 5
+                },
+                {
+                    storrelse: 50,
+                    antall: 8
+                },
+            ]
+        }
+    ]
+
+*/
 
 //sender errormelding
 function error(msg) {
