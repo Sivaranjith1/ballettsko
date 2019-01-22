@@ -4,17 +4,6 @@ const errorDiv = document.querySelector('#error')
 //handlekurv
 let handlekurv = []
 
-function handlekurvTotal() {
-    let total = 0;
-    handlekurv.forEach((e) => {
-        e.products.forEach((ev) => {
-            total += e.price * ev.amount;
-        })
-    })
-    return total;
-}
-handlekurvTotal();
-
 let isSidenavOpen = false
 $(function () {
     $(window).on("swipe", function (e) {
@@ -56,6 +45,8 @@ $(function () {
                     <h3>Endre valuta</h3>
                     <div id="valutaContainer"></div>
                 </div>`
+
+
         $("#sidenav").html(content);
         let valutaContainer = document.getElementById("valutaContainer");
         valutaContainer.className = "flexWrap";
@@ -69,6 +60,7 @@ $(function () {
             option.innerHTML = `<br>${e.navn}<img src=${e.img}>`;
             valutaContainer.appendChild(option);
         })
+        leggTilHandlekurv()
     }
 
 });
@@ -104,6 +96,7 @@ function endreValuta(index) {
     prisIndex = index
     leggTilsko()
     endreHandlekurvValuta()
+    leggTilHandlekurv()
 }
 
 //endrer valuta i handlekurv
@@ -278,6 +271,7 @@ function addToCart(evt) {
     }
 
     saveCart()
+    leggTilHandlekurv()
 }
 
 function saveCart() {
@@ -291,6 +285,46 @@ function getCart() {
     }
 }
 
+//legger til Handlekurv
+function leggTilHandlekurv() {
+    sidenavBody = document.querySelector('#sidenavBody')
+    sidenavBody.innerHTML = ''
+
+    handlekurv.forEach(elem => {
+        const {
+            products
+        } = elem
+
+        const productField = products.map(elm => `<div class="product">${elm.size}</div>`).join(' ')
+
+        const selSko = sko[elem.index]
+        sidenavBody.innerHTML += `
+            <div class="cartContent">
+            <h2 class="center text-ellipsis weight">${elem.name}</h2>
+            <div class="flex">
+                <div class = "card-img" style="height: auto;">
+                    <img src="${selSko.img}" style="object-fit: contain;">
+                </div>
+                <div class="innhold">
+                    <p class="padding1">pris: </p>
+                    ${productField}
+                </div>
+            </div>
+            </div>
+        `
+    })
+
+}
+
+function handlekurvTotal() {
+    let total = 0;
+    handlekurv.forEach((e) => {
+        e.products.forEach((ev) => {
+            total += e.price * ev.amount;
+        })
+    })
+    return total;
+}
 /*
     [
         {
