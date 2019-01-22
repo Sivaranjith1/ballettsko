@@ -43,7 +43,7 @@ let handlekurv = [{
     }
 ]
 
-console.log(handlekurvPriser())
+
 
 function handlekurvPriser() {
     let prisArray = [];
@@ -61,15 +61,6 @@ function handlekurvPriser() {
     return prisArray;
 }
 
-function handlekurvTotal() {
-    let total = 0;
-    handlekurv.forEach((e) => {
-        e.products.forEach((ev) => {
-            total += e.price * ev.amount;
-        })
-    })
-    return total;
-}
 let isSidenavOpen = false
 // $(document).on("pagecreate", "#content", function () {
 //     $(document).on("swipeleft swiperight", "#content", function (e) {
@@ -152,6 +143,7 @@ let prisIndex = 0
 //kalling av functions
 initModal()
 leggTilsko()
+getCart()
 
 //konvertere valuta
 function konverterPris(nok, index) {
@@ -321,7 +313,6 @@ function addToCart(evt) {
         const findSize = findProducts.find(elem => elem.size === valgtStor)
         if (findSize) {
             findSize.amount += antall
-            return
         } else {
             findProducts.push({
                 size: valgtStor,
@@ -329,7 +320,6 @@ function addToCart(evt) {
             })
         }
     } else {
-
         let product = {
             index: index,
             name: valgtSko.navn,
@@ -405,6 +395,20 @@ function handlekurvTotal() {
     ]
 
 */
+
+//lagrer handlekurven
+function saveCart() {
+    localStorage.setItem('handlekurv', JSON.stringify(handlekurv));
+}
+
+
+//henter handlekurven
+function getCart() {
+    const tempCart = localStorage.getItem('handlekurv')
+    if (tempCart) {
+        handlekurv = JSON.parse(tempCart)
+    }
+}
 
 //sender errormelding
 function error(msg) {
