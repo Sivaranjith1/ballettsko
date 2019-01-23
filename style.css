@@ -115,6 +115,32 @@
   margin-top: 10px;
 }
 
+#sidenavBtn {
+  height: 10%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+#kjopKnapp {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  box-shadow: black 0.1rem 0.1rem 1rem 0.1rem;
+  background: rgb(34, 34, 34);
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.disabled {
+  background: grey !important;
+  color: darkgrey !important;
+  cursor: no-drop !important;
+}
+
 #sidenavBody {
   top: 20%;
   height: 60%;
@@ -145,7 +171,7 @@
 }
 
 .overflowHidden {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 #content {
@@ -419,6 +445,18 @@ footer img {
   color: #ececec;
   font-size: 0.9rem;
   margin-bottom: 0.3rem;
+}
+
+.fa-trash {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.jc-around {
+  justify-content: space-around;
 }
 
 @media only screen and (max-width: 800px) {
